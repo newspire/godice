@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"newspire.com/die"
+	"newspire.org/die"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 		mydice[0].Roll()
 		mydice[1].Roll()
 		result := GetDiceMessage(mydice)
-		fmt.Printf(result)
+		fmt.Println(result)
 	}
 
 }
@@ -26,14 +26,14 @@ func main() {
 func GetDiceMessage(mydice [2]die.Die) string {
 	message := ""
 
-	if mydice[0].Value == 1 && mydice[1].Value == 1 {
+	if mydice[0].Value() == 1 && mydice[1].Value() == 1 {
 		message = "Snake Eyes!"
-	} else if mydice[0].Value == 6 && mydice[1].Value == 6 {
+	} else if mydice[0].Value() == 6 && mydice[1].Value() == 6 {
 		message = "Boxcars!"
-	} else if mydice[0].Value == mydice[1].Value {
+	} else if mydice[0].Value() == mydice[1].Value() {
 		message = "Doubles!"
 	}
-	result := fmt.Sprintf("Dice %d %d %s\n", mydice[0].Value, mydice[1].Value, message)
+	result := fmt.Sprintf("Dice %d %d %s", mydice[0].Value(), mydice[1].Value(), message)
 
 	return result
 }
