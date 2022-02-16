@@ -5,9 +5,14 @@ import (
 	"time"
 )
 
+type Roll interface {
+	Roll() int
+}
+
 type Die struct {
 	sides int
-	Value int
+	value int
+	isSet bool
 }
 
 // init sets initial values for variables used in the function.
@@ -27,6 +32,21 @@ func NewDie(sides int) *Die {
 }
 
 func (d *Die) Roll() int {
-	d.Value = rand.Intn(d.sides) + 1
-	return d.Value
+	d.value = rand.Intn(d.sides) + 1
+	d.isSet = false
+	return d.value
+}
+
+func (d *Die) Value() int {
+	return d.value
+}
+
+func (d *Die) Set(value int) int {
+	d.value = value
+	d.isSet = true
+	return d.value
+}
+
+func (d *Die) IsSet() bool {
+	return d.isSet
 }
