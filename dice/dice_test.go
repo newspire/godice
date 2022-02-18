@@ -5,47 +5,43 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"newspire.org/die"
+	"newspire.org/die/mocks"
 )
 
-func TestDiceMessages(t *testing.T) {
+func TestDiceMessage(t *testing.T) {
 
 	mockCtrl := gomock.NewController(t)
 	defer mockCtrl.Finish()
 
-	//mockRoll := mock_roll.NewMockRoll(mockCtrl)
+	d1 := mocks.NewMockRoller(mockCtrl)
+	d2 := mocks.NewMockRoller(mockCtrl)
 
-	var mydice [2]die.Die
-
-	for i := range mydice {
-		mydice[i] = *die.NewDie(6)
-	}
-
-	mydice[0].Set(2)
-	mydice[1].Set(2)
-
-	result := GetDiceMessage(mydice)
+	d1.EXPECT().Value().Return(2).AnyTimes()
+	d2.EXPECT().Value().Return(2).AnyTimes()
+	result := GetDiceMessage(d1, d2)
 
 	if !strings.Contains(result, "Doubles") {
-		t.Error("Double Test Failed")
+		t.Errorf("Double Test Failed, got %s", result)
 	}
 
-	mydice[0].Set(1)
-	mydice[1].Set(1)
-
-	result = GetDiceMessage(mydice)
+	d1 = mocks.NewMockRoller(mockCtrl)
+	d2 = mocks.NewMockRoller(mockCtrl)
+	d1.EXPECT().Value().Return(1).AnyTimes()
+	d2.EXPECT().Value().Return(1).AnyTimes()
+	result = GetDiceMessage(d1, d2)
 
 	if !strings.Contains(result, "Snake Eyes") {
-		t.Error("Snake Eyes Test Failed")
+		t.Errorf("Snake Eyes Test Failed, got %s", result)
 	}
 
-	mydice[0].Set(6)
-	mydice[1].Set(6)
-
-	result = GetDiceMessage(mydice)
+	d1 = mocks.NewMockRoller(mockCtrl)
+	d2 = mocks.NewMockRoller(mockCtrl)
+	d1.EXPECT().Value().Return(6).AnyTimes()
+	d2.EXPECT().Value().Return(6).AnyTimes()
+	result = GetDiceMessage(d1, d2)
 
 	if !strings.Contains(result, "Boxcars") {
-		t.Error("Boxcars Test Failed")
+		t.Errorf("Boxcars Test Failed, got %s", result)
 	}
 
 }

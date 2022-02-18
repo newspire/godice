@@ -5,8 +5,9 @@ import (
 	"time"
 )
 
-type Roll interface {
+type Roller interface {
 	Roll() int
+	Value() int
 }
 
 type Die struct {

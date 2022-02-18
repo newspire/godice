@@ -15,25 +15,23 @@ func main() {
 	}
 
 	for i := 5; i > 0; i-- {
-		mydice[0].Roll()
-		mydice[1].Roll()
-		result := GetDiceMessage(mydice)
+		result := GetDiceMessage(&mydice[0], &mydice[1])
 		fmt.Println(result)
 	}
 
 }
 
-func GetDiceMessage(mydice [2]die.Die) string {
+func GetDiceMessage(d1 die.Roller, d2 die.Roller) string {
 	message := ""
 
-	if mydice[0].Value() == 1 && mydice[1].Value() == 1 {
+	if d1.Value() == 1 && d2.Value() == 1 {
 		message = "Snake Eyes!"
-	} else if mydice[0].Value() == 6 && mydice[1].Value() == 6 {
+	} else if d1.Value() == 6 && d2.Value() == 6 {
 		message = "Boxcars!"
-	} else if mydice[0].Value() == mydice[1].Value() {
+	} else if d1.Value() == d2.Value() {
 		message = "Doubles!"
 	}
-	result := fmt.Sprintf("Dice %d %d %s", mydice[0].Value(), mydice[1].Value(), message)
+	result := fmt.Sprintf("Dice %d %d %s", d1.Value(), d2.Value(), message)
 
 	return result
 }
