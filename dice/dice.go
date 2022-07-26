@@ -15,6 +15,8 @@ func main() {
 	}
 
 	for i := 5; i > 0; i-- {
+		mydice[0].Roll()
+		mydice[1].Roll()
 		result := GetDiceMessage(&mydice[0], &mydice[1])
 		fmt.Println(result)
 	}
