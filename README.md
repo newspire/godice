@@ -1,5 +1,5 @@
 # godice
-This is my first Go project. I use this as a knowledge store. When I learn a new about go or go projects I incorporate it into this project.
+This is my first Go project. I use this as a knowledge store. When I learn something new about go or go projects I incorporate it into this project.
 
 ## dice
 This rolls two dice a number of times and shows the results.
