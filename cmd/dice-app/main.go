@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"newspire.org/die"
+	"github.com/newspire/godice/pkg/die"
 )
 
 func main() {

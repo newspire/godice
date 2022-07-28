@@ -13,11 +13,11 @@ ADD . /app
 ## We specify that we now wish to execute
 ## any further commands inside our /app
 ## directory
-WORKDIR /app/dice-app
+WORKDIR /app/cmd/dice-app
 ## we run go build to compile the binary
 ## executable of our Go program
 RUN go mod download
 RUN go build -o main .
 ## Our start command which kicks off
 ## our newly created binary executable
-CMD ["/app/dice-app/main"]
+CMD ["/app/cmd/dice-app/main"]
