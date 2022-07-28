@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  dice_app:
+    container_name: dice-app
+    build:
+      context: .
+      dockerfile: ./cmd/dice-app/Dockerfile
+    ports:
+      - "8080:8081"
