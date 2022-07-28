@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"newspire.org/die"
+	"github.com/newspire/godice/pkg/die"
 )
 
 func main() {

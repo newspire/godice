@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"newspire.org/die/mocks"
+	"github.com/newspire/godice/pkg/die/mocks"
 )
 
 func TestDiceMessage(t *testing.T) {
