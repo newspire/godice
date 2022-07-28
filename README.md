@@ -21,3 +21,7 @@ http://localhost:8080/roll
 /godice > docker build -t dice-app -f cmd/dice-app/Dockerfile .
 /godice > docker run -p 8080:8081 -it dice-app
 ```
+or
+```console
+/godice > docker compose up
+```
